@@ -1,3 +1,6 @@
+/**************************************
+ *  Classes and Enums
+ *************************************/
 enum SpriteKind {
     Player,
     Food,
@@ -11,6 +14,9 @@ enum ActionKind {
     Jumping
 }
 
+/**************************************
+ *  Constants and Global Variables
+ *************************************/
 const COUNTDOWN_MAX = 20
 let anim: animation.Animation = null
 let rabbit: Sprite = null
@@ -18,8 +24,10 @@ let chicken: Sprite = null
 let pig: Sprite = null
 let carrot: Sprite = null
 
+/**************************************
+ *  Functions
+ *************************************/
 function initScene() {
-
     scene.setTileMap(img`
     7 5 f 6 b b b f f 5 2 f 5 5 5 f
     7 f 5 f f b b f 6 5 f 5 5 f 5 2
@@ -176,10 +184,6 @@ function initEnemy() {
     pig.setFlag(SpriteFlag.BounceOnWall, true)
 }
 
-controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.setAction(rabbit, ActionKind.Walking)
-})
-
 function initFriend() {
     chicken = sprites.create(img`
         . . . . . . . . . . . . . . . .
@@ -266,6 +270,9 @@ function initPlayer() {
     scene.placeOnRandomTile(rabbit, 7)
 }
 
+/**************************************
+ *  Event Handlers
+ *************************************/
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (sprite == rabbit) {
         game.splash("pig ate you")
@@ -290,6 +297,10 @@ sprites.onDestroyed(SpriteKind.Food, function (sprite) {
     initFood()
 })
 
+controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.setAction(rabbit, ActionKind.Walking)
+})
+
 info.onCountdownEnd(function () {
     game.splash("time's up!")
     game.over(false, effects.melt)
@@ -305,6 +316,9 @@ game.onUpdate(function () {
     }
 })
 
+/**************************************
+ *  Main
+ *************************************/
 initScene()
 initFood()
 initFriend()
@@ -313,5 +327,3 @@ initPlayer()
 
 info.startCountdown(COUNTDOWN_MAX)
 info.setScore(COUNTDOWN_MAX)
-
-
