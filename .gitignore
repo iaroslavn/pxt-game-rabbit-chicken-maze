@@ -1,4 +1,5 @@
 built
+coverage
 node_modules
 yotta_modules
 yotta_targets
