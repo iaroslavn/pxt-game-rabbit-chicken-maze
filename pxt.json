@@ -2,7 +2,10 @@
     "name": "pxt-game-rabbit-chicken-maze",
     "version": "1.0.0",
     "description": "",
-    "dependencies": {},
+    "dependencies": {
+        "game": "*",
+        "animation": "*"
+    },
     "files": [
         "README.md",
         "src/main.ts",
@@ -11,10 +14,6 @@
         "src/percolation.ts",
         "src/weightedQuickUnionUF.ts"
     ],
-    "testFiles": [
-        "test/matrix.test.ts",
-        "test/mazeGenerator.test.ts",
-        "test/percolation.test.ts"
-    ],
+    "testFiles": [],
     "public": false
 }
