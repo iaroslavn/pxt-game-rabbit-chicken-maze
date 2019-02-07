@@ -3,7 +3,7 @@
  */
 export class Matrix {
   /**
-   * Rotate a square matrix counterclockwise in-place.
+   * Rotates a square matrix counterclockwise in-place.
    * @param arr A square matrix.
    */
   public static rotateCCW(arr: any[][]): void {
